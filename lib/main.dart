@@ -42,7 +42,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) => ScreenUtilInit(
     child: GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(primaryColor: Colors.purple),
+      theme: ThemeData(primaryColor: ColorsValue.primaryColor),
       translations: TranslationsFile(),
       getPages: AppPages.pages,
       initialRoute: AppPages.initial,

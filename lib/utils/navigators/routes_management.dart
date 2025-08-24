@@ -26,4 +26,19 @@ abstract class RouteManagement {
   static void goToEnterCode() {
     Get.toNamed<void>(Routes.enterCode);
   }
+
+  /// Go to the Profile Screen
+  static void goToProfile() {
+    Get.toNamed<void>(Routes.profile);
+  }
+
+  /// Go to the About Screen
+  static void goToAbout() {
+    Get.toNamed<void>(Routes.about);
+  }
+
+  /// Go to the Add Patient Screen
+  static void goToAddPatient() {
+    Get.toNamed<void>(Routes.addPatient);
+  }
 }

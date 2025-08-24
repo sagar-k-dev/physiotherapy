@@ -56,5 +56,23 @@ class AppPages {
       page: EnterCodeView.new,
       transition: Transition.rightToLeft,
     ),
+    GetPage<ProfileView>(
+      name: Routes.profile,
+      transitionDuration: transitionDuration,
+      page: ProfileView.new,
+      transition: Transition.rightToLeft,
+    ),
+    GetPage<AboutView>(
+      name: Routes.about,
+      transitionDuration: transitionDuration,
+      page: AboutView.new,
+      transition: Transition.rightToLeft,
+    ),
+    GetPage<AddPatientView>(
+      name: Routes.addPatient,
+      transitionDuration: transitionDuration,
+      page: AddPatientView.new,
+      transition: Transition.rightToLeft,
+    ),
   ];
 }

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:physiotherapy/res/res.dart';
-import 'package:physiotherapy/utils/utils.dart';
-import 'package:physiotherapy/widgets/widgets.dart';
+import 'package:physiotherapy/views/views.dart';
+import 'package:physiotherapy/widgets/custom_button.dart';
 
 import '../../utils/navigators/routes_management.dart';
 
@@ -16,7 +16,7 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
-  int _selectedTabIndex = 0;
+  int selectedTabIndex = 0;
 
   @override
   void initState() {
@@ -24,7 +24,7 @@ class _HomeViewState extends State<HomeView>
     _tabController = TabController(length: 2, vsync: this);
     _tabController.addListener(() {
       setState(() {
-        _selectedTabIndex = _tabController.index;
+        selectedTabIndex = _tabController.index;
       });
     });
   }
@@ -35,14 +35,9 @@ class _HomeViewState extends State<HomeView>
     super.dispose();
   }
 
-  void _handleDrawerMenu() {
-    // TODO: Implement drawer menu
-    AppLog.info('Drawer menu pressed');
-  }
+  void _handleDrawerMenu() {}
 
   void _handleAlertButton() {
-    // TODO: Navigate to alerts screen
-    AppLog.info('Alert button pressed');
     Get.snackbar(
       'Alerts',
       'Alerts feature coming soon!',
@@ -53,8 +48,6 @@ class _HomeViewState extends State<HomeView>
   }
 
   void _handleSearchButton() {
-    // TODO: Navigate to search screen
-    AppLog.info('Search button pressed');
     Get.snackbar(
       'Search',
       'Search feature coming soon!',
@@ -65,15 +58,7 @@ class _HomeViewState extends State<HomeView>
   }
 
   void _handleProfileButton() {
-    // TODO: Navigate to profile screen
-    AppLog.info('Profile button pressed');
-    Get.snackbar(
-      'Profile',
-      'Profile screen coming soon!',
-      backgroundColor: ColorsValue.primaryColor,
-      colorText: Colors.white,
-      snackPosition: SnackPosition.BOTTOM,
-    );
+    Get.bottomSheet(const ProfileMenuBottomSheet(), isScrollControlled: true);
   }
 
   @override
@@ -166,9 +151,9 @@ class _HomeViewState extends State<HomeView>
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _handleProfileButton,
-        backgroundColor: const Color(0xFF4FC3F7),
-        child: const Icon(Icons.person, color: Colors.white, size: 24),
+        onPressed: () => RouteManagement.goToAddPatient(),
+        backgroundColor: ColorsValue.primaryColor,
+        child: const Icon(Icons.add, color: Colors.white, size: 24),
       ),
     );
   }
@@ -234,7 +219,6 @@ class _HomeViewState extends State<HomeView>
             title: 'Appointments',
             onTap: () {
               Navigator.pop(context);
-              // TODO: Navigate to appointments
             },
           ),
           _buildDrawerItem(
@@ -242,7 +226,6 @@ class _HomeViewState extends State<HomeView>
             title: 'Reports',
             onTap: () {
               Navigator.pop(context);
-              // TODO: Navigate to reports
             },
           ),
           _buildDrawerItem(
@@ -250,7 +233,6 @@ class _HomeViewState extends State<HomeView>
             title: 'Settings',
             onTap: () {
               Navigator.pop(context);
-              // TODO: Navigate to settings
             },
           ),
           const Divider(),
@@ -259,7 +241,6 @@ class _HomeViewState extends State<HomeView>
             title: 'Logout',
             onTap: () {
               Navigator.pop(context);
-              // TODO: Implement logout
               RouteManagement.goToSignIn();
             },
           ),
@@ -286,35 +267,17 @@ class _HomeViewState extends State<HomeView>
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Welcome Section
-          Container(
-            width: double.infinity,
-            padding: EdgeInsets.all(Dimens.twenty),
-            decoration: BoxDecoration(
-              color: ColorsValue.primaryColor,
-              borderRadius: BorderRadius.circular(Dimens.ten),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text('Welcome back, Dr. John!', style: Styles.whiteBold16),
-                Dimens.boxHeight8,
-                Text(
-                  'You have 12 active patients today',
-                  style: Styles.white14.copyWith(
-                    color: Colors.white.withValues(alpha: 0.8),
-                  ),
-                ),
-              ],
-            ),
+          CustomButton(
+            title: '+ Add Patient',
+            onTap: () => RouteManagement.goToAddPatient(),
           ),
 
-          Dimens.boxHeight24,
+          Dimens.boxHeight16,
 
           // Patients List
           Text('Recent Patients', style: Styles.blackBold16),
 
-          Dimens.boxHeight16,
+          Dimens.boxHeight10,
 
           // Sample Patients
           _buildPatientCard(
@@ -370,7 +333,7 @@ class _HomeViewState extends State<HomeView>
             width: double.infinity,
             padding: EdgeInsets.all(Dimens.twenty),
             decoration: BoxDecoration(
-              color: const Color(0xFF4FC3F7),
+              color: ColorsValue.primaryColor,
               borderRadius: BorderRadius.circular(Dimens.ten),
             ),
             child: Column(
@@ -477,10 +440,7 @@ class _HomeViewState extends State<HomeView>
 
           // Action Button
           IconButton(
-            onPressed: () {
-              // TODO: Navigate to patient details
-              AppLog.info('Patient details pressed for $name');
-            },
+            onPressed: () {},
             icon: const Icon(
               Icons.add_circle_outline_rounded,
               color: Colors.grey,
@@ -488,10 +448,7 @@ class _HomeViewState extends State<HomeView>
             ),
           ),
           IconButton(
-            onPressed: () {
-              // TODO: Navigate to patient details
-              AppLog.info('Patient details pressed for $name');
-            },
+            onPressed: () {},
             icon: const Icon(Icons.more_vert, color: Colors.grey, size: 30),
           ),
         ],
@@ -528,7 +485,7 @@ class _HomeViewState extends State<HomeView>
                 width: 40,
                 height: 40,
                 decoration: BoxDecoration(
-                  color: const Color(0xFF4FC3F7),
+                  color: ColorsValue.primaryColor,
                   borderRadius: BorderRadius.circular(Dimens.ten),
                 ),
                 child: const Icon(Icons.group, color: Colors.white, size: 20),
@@ -553,10 +510,7 @@ class _HomeViewState extends State<HomeView>
 
               // Action Button
               IconButton(
-                onPressed: () {
-                  // TODO: Navigate to team details
-                  AppLog.info('Team details pressed for $name');
-                },
+                onPressed: () {},
                 icon: const Icon(
                   Icons.arrow_forward_ios,
                   color: Colors.grey,

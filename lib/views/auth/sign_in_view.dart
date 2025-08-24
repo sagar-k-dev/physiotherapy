@@ -31,8 +31,7 @@ class _SignInViewState extends State<SignInView> {
   }
 
   void _handleSignIn() {
-    // TODO: Implement sign in logic
-    AppLog.info('Sign in pressed');
+    RouteManagement.goToHome();
   }
 
   void _handleForgotPassword() {
