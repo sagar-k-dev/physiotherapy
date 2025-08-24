@@ -395,50 +395,43 @@ class _HomeViewState extends State<HomeView>
     required String lastVisit,
     required String avatar,
   }) {
-    return Container(
-      padding: EdgeInsets.fromLTRB(
+    return ExpansionTile(
+      tilePadding: EdgeInsets.fromLTRB(
         Dimens.sixteen,
-        Dimens.sixteen,
+        Dimens.ten,
         Dimens.zero,
-        Dimens.sixteen,
+        Dimens.ten,
       ),
-      decoration: BoxDecoration(
-        color: Colors.white,
+      childrenPadding: EdgeInsets.zero,
+      backgroundColor: Colors.blue.shade50,
+      collapsedBackgroundColor: Colors.blue.shade50,
+      shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(Dimens.ten),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withValues(alpha: 0.1),
-            blurRadius: 4,
-            offset: const Offset(0, 2),
-          ),
+        side: BorderSide(color: ColorsValue.primaryColor),
+      ),
+      collapsedShape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(Dimens.ten),
+        side: BorderSide(color: ColorsValue.primaryColor),
+      ),
+
+      leading: CircleAvatar(
+        radius: 25,
+        backgroundColor: ColorsValue.primaryColor,
+        child: Text(avatar, style: Styles.whiteBold14),
+      ),
+      title: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(name, style: Styles.blackBold14),
+          Dimens.boxHeight4,
+          Text('$age years • $condition', style: Styles.grey12),
+          Dimens.boxHeight4,
+          Text('Last visit: $lastVisit', style: Styles.grey12),
         ],
       ),
-      child: Row(
+      trailing: Row(
+        mainAxisSize: MainAxisSize.min,
         children: [
-          // Avatar
-          CircleAvatar(
-            radius: 25,
-            backgroundColor: ColorsValue.primaryColor,
-            child: Text(avatar, style: Styles.whiteBold14),
-          ),
-
-          Dimens.boxWidth16,
-
-          // Patient Info
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(name, style: Styles.blackBold14),
-                Dimens.boxHeight4,
-                Text('$age years • $condition', style: Styles.grey12),
-                Dimens.boxHeight4,
-                Text('Last visit: $lastVisit', style: Styles.grey12),
-              ],
-            ),
-          ),
-
-          // Action Button
           IconButton(
             onPressed: () {},
             icon: const Icon(
@@ -451,6 +444,83 @@ class _HomeViewState extends State<HomeView>
             onPressed: () {},
             icon: const Icon(Icons.more_vert, color: Colors.grey, size: 30),
           ),
+        ],
+      ),
+      children: [_buildPatientOptionsMenu(name)],
+    );
+  }
+
+  Widget _buildPatientOptionsMenu(String patientName) {
+    return Container(
+      decoration: BoxDecoration(
+        color: ColorsValue.primaryColor,
+        borderRadius: BorderRadius.only(
+          bottomLeft: Radius.circular(Dimens.ten),
+          bottomRight: Radius.circular(Dimens.ten),
+        ),
+      ),
+      child: Column(
+        children: [
+          // Menu options grid
+          Container(
+            padding: Dimens.edgeInsets16,
+            child: Column(
+              children: [
+                // First row
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    _buildMenuOption(Icons.feedback, 'Feedback', () {}),
+                    _buildMenuOption(Icons.notifications, 'Reminders', () {}),
+                    _buildMenuOption(Icons.assessment, 'Reports', () {}),
+                    _buildMenuOption(Icons.chat_bubble_outline, 'Chat', () {}),
+                  ],
+                ),
+
+                Dimens.boxHeight16,
+
+                // Second row
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    _buildMenuOption(Icons.call, 'Call', () {}),
+                    _buildMenuOption(Icons.video_call, 'Video Call', () {}),
+                    _buildMenuOption(Icons.download, 'Download', () {}),
+                    _buildMenuOption(Icons.person, 'Profile', () {}),
+                  ],
+                ),
+
+                Dimens.boxHeight16,
+
+                // Third row
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [_buildMenuOption(Icons.delete, 'Delete', () {})],
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildMenuOption(IconData icon, String label, VoidCallback onTap) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Column(
+        children: [
+          Container(
+            width: 50,
+            height: 50,
+            decoration: BoxDecoration(
+              color: Colors.cyan.withValues(alpha: 0.3),
+              shape: BoxShape.circle,
+            ),
+            child: Icon(icon, color: Colors.white, size: 24),
+          ),
+          Dimens.boxHeight8,
+          Text(label, style: Styles.white14, textAlign: TextAlign.center),
         ],
       ),
     );
