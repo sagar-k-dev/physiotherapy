@@ -151,9 +151,13 @@ class _HomeViewState extends State<HomeView>
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => RouteManagement.goToAddPatient(),
+        onPressed: () => _handleProfileButton(),
         backgroundColor: ColorsValue.primaryColor,
-        child: const Icon(Icons.add, color: Colors.white, size: 24),
+        child: const Icon(
+          Icons.person_outline_rounded,
+          color: Colors.white,
+          size: 24,
+        ),
       ),
     );
   }
