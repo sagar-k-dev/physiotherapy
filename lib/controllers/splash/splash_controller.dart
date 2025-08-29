@@ -17,7 +17,7 @@ class SplashController extends GetxController {
     await Future.delayed(const Duration(seconds: 3));
 
     if (isLoggedIn) {
-      RouteManagement.goToHome();
+      RouteManagement.goToPhysiotherapistHome();
     } else {
       RouteManagement.goToOnboarding();
     }

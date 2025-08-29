@@ -13,8 +13,13 @@ abstract class RouteManagement {
   }
 
   /// Go to the Home Screen
-  static void goToHome() {
-    Get.offAllNamed<void>(Routes.home);
+  static void goToPhysiotherapistHome() {
+    Get.offAllNamed<void>(Routes.physiotherapistHome);
+  }
+
+  /// Go to the Home Screen
+  static void goToPatientHome() {
+    Get.offAllNamed<void>(Routes.patientHome);
   }
 
   /// Go to the SignUp Screen

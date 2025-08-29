@@ -18,7 +18,9 @@
         "get",
         "http",
         "package_info_plus",
-        "shared_preferences"
+        "shared_preferences",
+        "syncfusion_flutter_charts",
+        "table_calendar"
       ],
       "devDependencies": [
         "flutter_lints",
@@ -58,6 +60,25 @@
         "test_api",
         "vector_math",
         "vm_service"
+      ]
+    },
+    {
+      "name": "syncfusion_flutter_charts",
+      "version": "30.2.7",
+      "dependencies": [
+        "flutter",
+        "intl",
+        "syncfusion_flutter_core",
+        "vector_math"
+      ]
+    },
+    {
+      "name": "table_calendar",
+      "version": "3.2.0",
+      "dependencies": [
+        "flutter",
+        "intl",
+        "simple_gesture_detector"
       ]
     },
     {
@@ -351,6 +372,21 @@
         "stream_channel",
         "string_scanner",
         "term_glyph"
+      ]
+    },
+    {
+      "name": "syncfusion_flutter_core",
+      "version": "30.2.7",
+      "dependencies": [
+        "flutter",
+        "vector_math"
+      ]
+    },
+    {
+      "name": "simple_gesture_detector",
+      "version": "0.2.1",
+      "dependencies": [
+        "flutter"
       ]
     },
     {
@@ -708,6 +744,15 @@
       "dependencies": [
         "flutter",
         "path_provider_platform_interface"
+      ]
+    },
+    {
+      "name": "intl",
+      "version": "0.20.2",
+      "dependencies": [
+        "clock",
+        "meta",
+        "path"
       ]
     }
   ],

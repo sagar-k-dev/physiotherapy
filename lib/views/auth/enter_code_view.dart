@@ -58,7 +58,7 @@ class _EnterCodeViewState extends State<EnterCodeView> {
       if (_enteredPin.length == 4) {
         // TODO: Implement verification logic
         AppLog.info('Verifying code: $_enteredPin');
-        RouteManagement.goToHome();
+        RouteManagement.goToPhysiotherapistHome();
       } else {
         // Show error for incomplete PIN
         Get.snackbar(

@@ -31,7 +31,7 @@ class _SignInViewState extends State<SignInView> {
   }
 
   void _handleSignIn() {
-    RouteManagement.goToHome();
+    RouteManagement.goToPhysiotherapistHome();
   }
 
   void _handleForgotPassword() {
@@ -178,6 +178,18 @@ class _SignInViewState extends State<SignInView> {
                   ),
                 ),
               ],
+            ),
+          ),
+          Dimens.boxHeight24,
+          GestureDetector(
+            onTap: () {
+              RouteManagement.goToPatientHome();
+            },
+            child: Text(
+              'Patient Sign In',
+              style: Styles.white14w500.copyWith(
+                color: const Color(0xFF4FC3F7),
+              ),
             ),
           ),
           const Spacer(),

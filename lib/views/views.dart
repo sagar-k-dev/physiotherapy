@@ -1,7 +1,13 @@
 export 'about/about.dart';
 export 'auth/auth.dart';
 export 'home/home.dart';
+export 'patient_flow/session_view.dart';
+export 'patient_flow/exercise_player_view.dart';
+export 'patient_flow/feedback_view.dart';
+export 'patient_flow/award_popup_view.dart';
+export 'patient_flow/dashboard_view.dart';
 export 'patient/patient.dart';
 export 'splash/splash.dart';
 export 'onboarding/onboarding.dart';
 export 'profile/profile.dart';
+export 'patient_flow/patient_flow.dart';

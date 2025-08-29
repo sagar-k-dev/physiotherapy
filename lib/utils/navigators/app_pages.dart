@@ -25,10 +25,17 @@ class AppPages {
       binding: SplashBinding(),
       transition: Transition.rightToLeft,
     ),
-    GetPage<HomeView>(
-      name: Routes.home,
+    GetPage<PhysiotherapistHomeView>(
+      name: Routes.physiotherapistHome,
       transitionDuration: transitionDuration,
-      page: HomeView.new,
+      page: PhysiotherapistHomeView.new,
+      binding: HomeBinding(),
+      transition: Transition.rightToLeft,
+    ),
+    GetPage<PatientHomeView>(
+      name: Routes.patientHome,
+      transitionDuration: transitionDuration,
+      page: PatientHomeView.new,
       binding: HomeBinding(),
       transition: Transition.rightToLeft,
     ),
